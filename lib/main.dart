@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/wallpaper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +14,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'WallPaper App',
       theme: ThemeData(
-        brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       
+      home: const WallPaper(),
     );
   }
 }
-
