@@ -4,7 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:wallpaper_app/full_view.dart';
+import 'package:wallpaper_app/views/full_view.dart';
+
 
 class WallPaper extends StatefulWidget {
   const WallPaper({super.key});
