@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_app/views/wallpaper.dart';
 
 void main() {
+  // runApp(
+  //   ChangeNotifierProvider(
+  //     create: (context) => WallpaperProvider(),
+  //     child: const MyApp(),
+  //   ),
+  // );
   runApp(const MyApp());
 }
 
