@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaper_app/views/wallpaper.dart';
+
+import 'views/splash_view.dart';
 
 void main() {
   // runApp(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WallPaper(),
+      home: const SplashView(),
     );
   }
 }

@@ -3,9 +3,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:wallpaper_app/views/full_view.dart';
-
 
 class WallPaper extends StatefulWidget {
   const WallPaper({super.key});
@@ -58,54 +58,66 @@ class _WallPaperState extends State<WallPaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        title: Text(
+          'WallCraft',
+          style: GoogleFonts.poppins(color: Colors.white),
+        ),
+      ),
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.builder(
-              itemCount: images.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisSpacing: 2,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                itemCount: images.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 9,
                   crossAxisCount: 3,
                   childAspectRatio: 2 / 3,
-                  mainAxisSpacing: 2),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullView(
-                              imageUrl: images[index]['src']['large2x']),
-                        ));
-                  },
-                  child: Container(
-                    color: Colors.black,
-                    child: Image.network(
-                      images[index]['src']['tiny'],
-                      fit: BoxFit.cover,
-                      filterQuality: FilterQuality.high,
+                  mainAxisSpacing: 9,
+                ),
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FullView(
+                                imageUrl: images[index]['src']['large2x']),
+                          ));
+                    },
+                    child: Container(
+                      color: Colors.black,
+                      child: Image.network(
+                        images[index]['src']['tiny'],
+                        fit: BoxFit.cover,
+                        filterQuality: FilterQuality.high,
+                      ),
                     ),
-                  ),
-                );
+                  );
+                },
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                loadMore();
               },
+              child: const SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: Center(
+                    child: Text(
+                  'Load More',
+                  style: TextStyle(color: Colors.white),
+                )),
+              ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              loadMore();
-            },
-            child: const SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: Center(
-                  child: Text(
-                'Load More',
-                style: TextStyle(color: Colors.white),
-              )),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
